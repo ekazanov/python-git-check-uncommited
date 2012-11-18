@@ -1,0 +1,81 @@
+#! /usr/bin/python
+# -*- coding: utf-8 -*-
+# Copyright Evgeny Kazanov 2012
+"""
+"""
+
+import sys
+import os
+import re
+import subprocess
+
+LIST_FILE = "<your local repositories list>"
+
+def read_list(list_file):
+    out = []
+    fd = open(list_file,"r")
+    for line in fd.readlines():
+        line = line.strip('\n')
+        line = line.strip()
+        if re.findall('^[\s]*#.*',line) \
+                or re.findall('^[\s]*$',line):
+            continue
+        if not re.search('^[\w-]+[\s]+[\w/-]+',line):
+            continue
+        cfg_obj = re.match('^([\w-]+)[\s^.]+([\w/._-]+)',line)
+        if cfg_obj:
+            cfg_key = cfg_obj.group(1)
+            cfg_val = cfg_obj.group(2)
+            out.append((cfg_key,cfg_val))
+    fd.close()
+    return out
+
+def check_git_dirs(dirs_arr):
+    col_1 = 32
+    col_2 = 24
+    col_3 = 18
+    line_length = col_1 + col_2 + col_3
+    fmt_str = "%%-%ss%%-%ss%%-%ss" % (col_1, col_2, col_3)
+    print "-" * line_length
+    print fmt_str % ("Name","Commit","Push")
+    print "-" * line_length
+    for name, dirname in dirs_arr:
+        # Check if commited
+        command = 'cd ' + dirname + '; git status -s '
+        proc = subprocess.Popen([command],
+                                shell=True,
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        stdout,stderr = proc.communicate()
+        #print "stdout =", stdout
+        if stderr:
+            commit_msg = "Error"
+            print stderr
+        elif stdout == '':
+            commit_msg = "All commited"
+        else:
+            commit_msg = "Not commited"
+        # Check if pushed
+        command = 'cd ' + dirname + '; git status | grep "Your branch is ahead"'
+        proc = subprocess.Popen([command],
+                                shell=True,
+                                stdout=subprocess.PIPE,
+                                stderr=subprocess.PIPE)
+        stdout,stderr = proc.communicate()
+        if stderr:
+            push_msg = "Error"
+        elif stdout == '':
+            push_msg = "Pushed"
+        else:
+            push_msg = "No pushed"
+        print fmt_str % (name,commit_msg,push_msg)
+    print "-" * line_length
+
+def main():
+    dirs_arr = read_list(LIST_FILE)
+    check_git_dirs(dirs_arr)
+
+if __name__ == "__main__":
+    main()
+    sys.exit()
+    

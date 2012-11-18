@@ -1,0 +1,29 @@
+* python-git-check-uncommited
+** Info
+Author: Evgeny Kazanov
+** Introduction
+Script check your local repositories and prints to standard output the
+states of them. Sample output:
+
+evgeny@krolik:~$ __git_check_uncommitied
+--------------------------------------------------------------------------
+Name                            Commit                  Push              
+--------------------------------------------------------------------------
+ORG                             Not commited            Pushed            
+BIN                             All commited            Pushed            
+EMACS                           All commited            Pushed            
+0001-my-tools-libs              All commited            Pushed            
+0047-blog                       All commited            Pushed            
+0057-poisk-raboty               All commited            Pushed            
+0083-poisk-raboty-webiface      All commited            Pushed            
+--------------------------------------------------------------------------
+
+** System requirements
+1. Linux (Script was tested with Ubuntu 12.04)
+2. Python (Script was tested with 2.7 and 2.6 versions),
+** Installation
+1. Copy "__git_check_uncommitied" to the directory which is in your $PATH.
+2. Change the LIST_FILE variable to your local repositories list file name.
+3. Fill your local repositories list file.
+** Usage
+Just run __git_check_uncommitied
