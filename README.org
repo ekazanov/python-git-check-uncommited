@@ -4,7 +4,7 @@ Author: Evgeny Kazanov
 ** Introduction
 Script check your local repositories and prints to standard output the
 states of them. Sample output:
-
+#+BEGIN_SRC python
 evgeny@krolik:~$ __git_check_uncommitied
 --------------------------------------------------------------------------
 Name                            Commit                  Push              
@@ -17,6 +17,7 @@ EMACS                           All commited            Pushed
 0057-poisk-raboty               All commited            Pushed            
 0083-poisk-raboty-webiface      All commited            Pushed            
 --------------------------------------------------------------------------
+#+END_SRC
 
 ** System requirements
 1. Linux (Script was tested with Ubuntu 12.04)
@@ -26,4 +27,4 @@ EMACS                           All commited            Pushed
 2. Change the LIST_FILE variable to your local repositories list file name.
 3. Fill your local repositories list file.
 ** Usage
-Just run __git_check_uncommitied
+Just run __git_check_uncommitied from terminal.
