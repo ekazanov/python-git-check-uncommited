@@ -12,10 +12,6 @@ Name                            Commit                  Push
 ORG                             Not commited            Pushed            
 BIN                             All commited            Pushed            
 EMACS                           All commited            Pushed            
-0001-my-tools-libs              All commited            Pushed            
-0047-blog                       All commited            Pushed            
-0057-poisk-raboty               All commited            Pushed            
-0083-poisk-raboty-webiface      All commited            Pushed            
 --------------------------------------------------------------------------
 #+END_EXAMPLE
 
