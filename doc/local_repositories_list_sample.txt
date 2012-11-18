@@ -1,0 +1,7 @@
+# List of the local GIT repositories for "__git_check_uncommitied" script 
+# Format: ^NAME DIR$
+# NAME - name
+# DIR  - repository path
+ORG /home/evgeny/_wiki/org
+BIN /home/evgeny/bin
+EMACS /home/evgeny/.emacs.d/

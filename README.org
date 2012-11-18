@@ -25,6 +25,7 @@ EMACS                           All commited            Pushed
 ** Installation
 1. Copy "__git_check_uncommitied" to the directory which is in your $PATH.
 2. Change the LIST_FILE variable to your local repositories list file name.
-3. Fill your local repositories list file.
+3. Fill your local repositories list file. A sample is in
+   doc/local_repositories_list_sample.txt file
 ** Usage
 Just run __git_check_uncommitied from terminal.
